@@ -7,7 +7,7 @@
 // $base_datos: Nombre de la base de datos a usar
 $host = '127.0.0.1';
 $usuario = 'root';
-$contrasena = 'Codehorizon1234/';
+$contrasena = '';
 $base_datos = 'ausencias_cpifp';
 
 // BLOQUE 2: CREAR LA CONEXIÓN A LA BASE DE DATOS
