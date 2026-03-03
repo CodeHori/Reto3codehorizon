@@ -27,13 +27,21 @@ function funcionContadorJSON($dni = null) {
     }
 
     // Consulta usuarios y filta mediante el where
-    $consulta = "SELECT correo_electronico, nombre, apellido, dni FROM usuarios";
-    if ($dni !== null) {
-        $consulta .= " WHERE dni = '$dni'";
+    // consulta prepada  //
+    if ($dni === null) {
+        // Si NO se filtra por DNI
+        $stmt = $conexion->prepare("SELECT correo_electronico, nombre, apellido, dni FROM usuarios");
+    } else {
+        // Si SÍ se filtra por DNI
+        $stmt = $conexion->prepare("SELECT correo_electronico, nombre, apellido, dni FROM usuarios WHERE dni = ?");
+        $stmt->bind_param("s", $dni); // "s" = string
     }
-//pepara la conexion
-    $resultado = $conexion->query($consulta);
-//mensaje error
+
+    //pepara la conexion
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    //mensaje error
     if (!$resultado) {
         die("Error en la consulta: " . $conexion->error);
     }
@@ -55,6 +63,7 @@ function funcionContadorJSON($dni = null) {
     }
 
     $resultado->free(); //libera la conexion
+    $stmt->close(); // cerrar consulta preparada
     return $usuarios_array; // Devuelve el array
 }
 

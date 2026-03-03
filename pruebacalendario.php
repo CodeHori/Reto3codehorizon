@@ -3,6 +3,7 @@ session_start();
 
 require_once "conexionbd.php"; 
 
+
 if (!isset($_SESSION['dni'])) {
     header('location: index.php');
     exit();
@@ -13,7 +14,7 @@ $SQL = "SELECT
   horario.id_horario,
   horario.aula,
   horario.modulo,
-  horario.id_hora_,
+  horario.id_hora,
   usuarios.dni,
   usuarios.correo_electronico,
   usuarios.familia,
@@ -26,8 +27,8 @@ FROM
   ausencia
   LEFT JOIN horario ON ausencia.id_horario = horario.id_horario
   LEFT JOIN usuarios ON horario.dni_usuario = usuarios.dni
-  LEFT JOIN horas ON horario.id_hora_ = horas.id_hora
-  WHERE LEFT(horario.id_hora_, 1) =
+  LEFT JOIN horas ON horario.id_hora = horas.id_hora
+  WHERE LEFT(horario.id_hora, 1) =
        ELT(DAYOFWEEK(CURDATE()), 'D', 'L', 'M', 'X', 'J', 'V', 'S')
   AND DAYOFWEEK(CURDATE()) BETWEEN 2 AND 6
 
@@ -46,8 +47,6 @@ $resultado = $conexion->query($SQL); //pepara la conexion
 if (!$resultado) {
     die("Error en la consulta: " . $conexion->error);
 }
-
-
 
 foreach ($_POST as $key => $value) { //Recorre todos los datos enviados por el formulario ($_POST)
     // $key contiene el nombre del campo y $value su valor
@@ -92,8 +91,6 @@ foreach ($_POST as $key => $value) { //Recorre todos los datos enviados por el f
     }
 }
 
-
-
 $file = __DIR__ . '/guardias.json';
 $guardias = []; //Inicializa un array vacío para guardar las guardias del usuario.
 $usuario = $_SESSION['dni']; //Obtiene el DNI del usuario que está logueado.
@@ -106,10 +103,6 @@ if (file_exists($file)) { //Verifica si el archivo guardias.json existe antes de
 }
 ?>
 
-
-
-
-?>
 <!DOCTYPE html>
   <html>
         <head>
@@ -117,9 +110,9 @@ if (file_exists($file)) { //Verifica si el archivo guardias.json existe antes de
             <link rel="stylesheet" href="style.css">
         </head>
         <body>
-            <?php include __DIR__ . '/interfaz/nav.php'; ?> 
             <nav>
-             
+              <?php include __DIR__ . '/interfaz/nav.php'; ?> 
+
             </nav>
             <main>
                     <h1>Calendario</h1>
@@ -213,7 +206,11 @@ if (file_exists($file)) { //Verifica si el archivo guardias.json existe antes de
                 $conexion->close(); //se cierra la conexion a la base de datos.//
                 ?>
                 </table>
+                <button><a href="horarioprofesor.php">Tu horario</a></button>
+
             </main>
-            <?php include __DIR__ . '/interfaz/footer.php'; ?>  
+            <footer>
+              <?php include __DIR__ . '/interfaz/footer.php'; ?>  
+            </footer>  
         </body>
     </html>                                                 

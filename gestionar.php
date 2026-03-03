@@ -158,7 +158,7 @@ $sql = "SELECT a.id_a, a.dni_usuario, a.justificante, a.tipo_ausencia, a.tarea_f
         FROM ausencia a
         JOIN usuarios u ON a.dni_usuario = u.dni
         JOIN horario ho ON a.id_horario = ho.id_horario
-        JOIN horas h ON ho.id_hora_ = h.id_hora
+        JOIN horas h ON ho.id_hora = h.id_hora
         ORDER BY a.id_a DESC";
 $stmt = $conexion->prepare($sql);
 $stmt->execute();

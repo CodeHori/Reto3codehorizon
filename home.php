@@ -50,7 +50,7 @@ $clase = $tipo_mensaje === 'exito' ? 'mensaje mensaje-exito' : 'mensaje mensaje-
                 <h2 class="h2bienvenida">Panel de gestion: Ausencias y Guardias</h2>
                 <p class="texto-webdescrip1">Aplicacion para gestionar ausencias y guardias del CPIFP.</p>
                 <p class="texto-webdescrip2">Accede a calendario, solicitudes y panel de administracion segun tu rol.<p> 
-                <p br>https://prod.liveshare.vsengsaas.visualstudio.com/join?CB54294030FCF6CA1C6A283CE7D71008D3BF</p>
+                <p br>https://prod.liveshare.vsengsaas.visualstudio.com/join?BA5E984DE5400EF6CE3EC23689E4A7FCE80F</p>
             </div>
         </div>
     </main>

@@ -10,6 +10,7 @@
                 <li><a href="solicitud.php">Solicitud de ausencias</a></li>
                 <li><a href="tablacontador.php">Contador</a></li>
                 <li><a href="historialguardias.php">Historial de guardias</a></li>
+                <li><a href="añadirhorariohtml.php">Añadir horario</a></li>
                 <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
                     <li><a href="paneladmin.php">Panel de administración</a></li>
                 <?php endif; ?>

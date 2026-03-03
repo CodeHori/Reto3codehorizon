@@ -210,7 +210,7 @@ $stmt->close();
 //ASC: Orden ascendente por hora
 $sql_horas = "SELECT ho.id_horario, h.dia, h.hora, ho.aula, ho.modulo
               FROM horario ho
-              JOIN horas h ON ho.id_hora_ = h.id_hora
+              JOIN horas h ON ho.id_hora= h.id_hora
               WHERE ho.dni_usuario = ?
               ORDER BY FIELD(h.dia, 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'), h.hora ASC";
 //Prepara la consulta

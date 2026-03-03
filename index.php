@@ -45,8 +45,8 @@ unset($_SESSION['error']);
                     <label for="uname">Correo</label>
                     <input type="text" name="uname" id="uname" placeholder="Correo" required class="control-formulario">
 
-                    <label for="psw">Contrasena</label>
-                    <input type="password" name="psw" id="psw" placeholder="Contrasena" required class="control-formulario">
+                    <label for="psw">Contraseña</label>
+                    <input type="password" name="psw" id="psw" placeholder="Contraseña" required class="control-formulario">
 
                     <div class="acciones-formulario">
                         <button type="submit" class="boton boton-primario">Acceder</button>

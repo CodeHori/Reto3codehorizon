@@ -194,6 +194,10 @@ if (isset($_GET['eliminar'])) {
     volver_usuarios('Usuario eliminado correctamente.', 'exito');
 }
 
+// BLOQUE 7: PREPARAR LOS DATOS DEL USUARIO A EDITAR
+// Si el usuario hace clic en "Editar", se obtiene el DNI desde la URL
+// Se consulta la base de datos para obtener todos los datos actuales del usuario
+// Estos datos se cargan en el formulario para que el usuario vea qué está editando
 $editar = false;
 $usuario_edicion = [
     'dni' => '',
@@ -219,8 +223,15 @@ if (isset($_GET['editar'])) {
     $stmt->close();
 }
 
+// BLOQUE 8: OBTENER LA LISTA COMPLETA DE USUARIOS PARA MOSTRAR EN LA TABLA
+// Se consulta la base de datos para obtener todos los usuarios ordenados por apellido y nombre
+// Esta lista se mostrará en una tabla HTML para que el admin pueda ver, editar o eliminar usuarios
 $listado = $conexion->query('SELECT dni, nombre, apellido, correo_electronico, familia, rol FROM usuarios ORDER BY apellido, nombre');
 
+// BLOQUE 9: OBTENER MENSAJES DE LA SESIÓN PARA MOSTRAR AL USUARIO
+// Se obtienen los mensajes guardados en la sesión (error, éxito, etc.) desde operaciones anteriores
+// Se determina la clase CSS a usar según el tipo de mensaje (verde para éxito, rojo para error)
+// Luego se eliminan los mensajes de la sesión para que no se repitan en la próxima carga
 if (isset($_SESSION['mensaje'])) {
     $mensaje = $_SESSION['mensaje'];
 } else {
