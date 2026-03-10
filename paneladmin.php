@@ -12,7 +12,7 @@ require_once __DIR__ . '/auth.php';
 // $_SESSION['tipo_mensaje']: Tipo del mensaje ('error')
 // header('Location: home.php'): Redirige al panel principal
 // exit(): Detiene la ejecución
-if (($_SESSION['rol'] ?? '') !== 'admin') {
+if (($_SESSION['rol']) !== 'admin') {
     $_SESSION['mensaje'] = 'No tienes permiso para acceder al panel de administracion.';
     $_SESSION['tipo_mensaje'] = 'error';
     header('Location: home.php');

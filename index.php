@@ -9,7 +9,7 @@ session_start();
 // header('Location: home.php'): Redirige a la página de inicio
 // exit(): Detiene la ejecución del script
 if (isset($_SESSION['dni'])) {
-    header('Location: home.php');
+    header('Location: /../php/home.php');
     exit();
 }
 
@@ -41,7 +41,7 @@ unset($_SESSION['error']);
             <?php endif; ?>
 
             <section>
-                <form action="controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario" style="max-width: 360px; margin: 0 auto;">
+                <form action="/config/controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario" style="max-width: 360px; margin: 0 auto;">
                     <label for="uname">Correo</label>
                     <input type="text" name="uname" id="uname" placeholder="Correo" required class="control-formulario">
 

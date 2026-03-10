@@ -22,4 +22,3 @@ $conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
 if ($conexion->connect_error) {
     die('Conexion fallida: ' . $conexion->connect_error);
 }
-

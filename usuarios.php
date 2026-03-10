@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // BLOQUE 1: INCLUIR ARCHIVOS NECESARIOS PARA QUE LA PÁGINA FUNCIONE
 // auth.php verifica que el usuario esté logueado correctamente (sin login, no se puede acceder)
 // conexionbd.php establece la conexión con la base de datos de ausencias (necesaria para todas las operaciones)
@@ -114,6 +114,30 @@ if (isset($_POST['guardar'])) {
     } else {
         $contraseña_texto = '';
     }
+    // Validación DNI: debe tener 9 caracteres
+    if (strlen($dni) !== 9) {
+        volver_usuarios('El DNI debe tener exactamente 9 caracteres', 'error');
+    }
+
+    // Validación: el DNI debe tener 8 números más una letra en mayúscula
+    if (!preg_match('/^[0-9]{8}[A-Z]$/', $dni)) {
+        volver_usuarios('El DNI debe tener 8 números y una letra en mayúscula', 'error');
+    }
+
+    // Validación: familia solo debe tener letras en minúsculas
+    if ($familia !== '' && !preg_match('/^[a-záéíóú]+$/', $familia)) {
+        volver_usuarios('El campo familia solo puede contener letras en minúsculas', 'error');
+    }
+
+    // Validación: nombre solo letras y mínimo 3 caracteres
+    if (!preg_match('/^[A-Za-zÁÉÍÓÚáéíóúÑñ]{3,}$/', $nombre)) {
+        volver_usuarios('El nombre solo puede contener letras y debe tener al menos 3 caracteres', 'error');
+    }
+
+    // Validación: apellido solo letras y mínimo 3 caracteres
+    if (!preg_match('/^[A-Za-zÁÉÍÓÚáéíóúÑñ]{3,}$/', $apellido)) {
+        volver_usuarios('El apellido solo puede contener letras y debe tener al menos 3 caracteres', 'error');
+    }
 
     // BLOQUE 5.2: VALIDAR QUE TODOS LOS CAMPOS OBLIGATORIOS ESTÉN LLENOS
     // Si alguno de los campos principales está vacío después de obtener los datos, se muestra error
@@ -181,7 +205,7 @@ if (isset($_POST['guardar'])) {
 if (isset($_GET['eliminar'])) {
     $dni_eliminar = trim($_GET['eliminar']);
 
-    if ($dni_eliminar === ($_SESSION['dni'] ?? '')) {
+    if ($dni_eliminar === ($_SESSION['dni'])) {
         volver_usuarios('No puedes eliminar tu propio usuario.', 'error');
     }
 
@@ -252,123 +276,3 @@ if ($tipo_mensaje === 'exito') {
     $clase_mensaje = 'mensaje mensaje-error';
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de usuarios</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <?php include __DIR__ . '/interfaz/nav.php'; ?>
-
-    <main>
-        <div class="contenedor">
-            <div class="encabezado-centrado">
-                <h1>Gestion de usuarios</h1>
-            </div>
-
-            <?php if ($mensaje !== ''): ?>
-                <div class="<?php echo $clase_mensaje; ?>"><?php echo htmlspecialchars($mensaje); ?></div>
-            <?php endif; ?>
-
-            <div class="tarjeta tarjeta-formulario ancho-grande">
-                <h2 style="margin-bottom: 15px;"><?php echo $editar ? 'Editar usuario' : 'Nuevo usuario'; ?></h2>
-                <form method="post" action="usuarios.php">
-                    <input type="hidden" name="accion" value="<?php echo $editar ? 'editar' : 'crear'; ?>">
-                    <div class="form-inline-row">
-                        <div class="form-inline-item">
-                            <label class="form-label">DNI</label>
-                            <input class="control-formulario" type="text" name="dni" placeholder="DNI" required value="<?php echo htmlspecialchars($usuario_edicion['dni']); ?>" <?php echo $editar ? 'readonly' : ''; ?>>
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label">Nombre</label>
-                            <input class="control-formulario" type="text" name="nombre" placeholder="Nombre" required value="<?php echo htmlspecialchars($usuario_edicion['nombre']); ?>">
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label">Apellido</label>
-                            <input class="control-formulario" type="text" name="apellido" placeholder="Apellido" required value="<?php echo htmlspecialchars($usuario_edicion['apellido']); ?>">
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label">Correo</label>
-                            <input class="control-formulario" type="email" name="correo_electronico" placeholder="Correo" required value="<?php echo htmlspecialchars($usuario_edicion['correo_electronico']); ?>">
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label"><?php echo $editar ? 'Nueva contraseña (opcional)' : 'Contraseña'; ?></label>
-                            <input class="control-formulario" type="password" name="contraseña" placeholder="Contraseña">
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label">Familia</label>
-                            <input class="control-formulario" type="text" name="familia" placeholder="Familia" value="<?php echo htmlspecialchars($usuario_edicion['familia']); ?>">
-                        </div>
-
-                        <div class="form-inline-item">
-                            <label class="form-label">Rol</label>
-                            <select class="control-formulario" name="rol">
-                                <option value="usuario" <?php echo $usuario_edicion['rol'] === 'usuario' ? 'selected' : ''; ?>>Usuario</option>
-                                <option value="admin" <?php echo $usuario_edicion['rol'] === 'admin' ? 'selected' : ''; ?>>Admin</option>
-                            </select>
-                        </div>
-                    </div><br>
-
-                    <div class="acciones-formulario">
-                        <button class="boton boton-primario" type="submit" name="guardar">Guardar</button>
-                        <?php if ($editar): ?>
-                            <a class="boton boton-enlace" href="usuarios.php">Cancelar</a>
-                        <?php endif; ?>
-                    </div>
-                </form>
-            </div>
-
-            <div class="margen-abajo-30">
-                <h2 class="texto-centrado">Listado de usuarios</h2><br>
-                <div class="table-wrapper">
-                    <table class="tarjeta tarjeta-tabla">
-                        <thead>
-                            <tr class="table-header">
-                                <th>DNI</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Correo</th>
-                                <th>Familia</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php if ($listado && $listado->num_rows > 0): ?>
-                            <?php while ($fila = $listado->fetch_assoc()): ?>
-                                <tr class="table-row-hover">
-                                    <td class="celda-id"><?php echo htmlspecialchars($fila['dni']); ?></td>
-                                    <td class="celda-texto"><?php echo htmlspecialchars($fila['nombre']); ?></td>
-                                    <td class="celda-texto"><?php echo htmlspecialchars($fila['apellido']); ?></td>
-                                    <td class="celda-texto"><?php echo htmlspecialchars($fila['correo_electronico']); ?></td>
-                                    <td class="celda-texto"><?php echo htmlspecialchars($fila['familia']); ?></td>
-                                    <td class="celda-texto"><?php echo htmlspecialchars($fila['rol']); ?></td>
-                                    <td>
-                                        <a class="boton boton-pequeno boton-primario" href="usuarios.php?editar=<?php echo urlencode($fila['dni']); ?>">Editar</a>
-                                        <a class="boton boton-pequeno boton-rechazar" href="usuarios.php?eliminar=<?php echo urlencode($fila['dni']); ?>" onclick="return confirm('¿Eliminar usuario?');">Eliminar</a>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="7">No hay usuarios registrados.</td>
-                            </tr>
-                        <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <?php include __DIR__ . '/interfaz/footer.php'; ?>
-</body>
-</html>
