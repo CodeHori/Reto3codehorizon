@@ -121,8 +121,25 @@ session_start();
                 </div>
             </div>
         </div>
+            <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var input = document.getElementById('searchInput');
+        if (!input) return;
+
+        input.addEventListener('input', function () {
+            var filtro = input.value.toLowerCase();
+            var filas = document.querySelectorAll('.historial-ausencias tbody tr');
+
+            filas.forEach(function (fila) {
+                var texto = fila.textContent.toLowerCase();
+                fila.style.display = texto.indexOf(filtro) !== -1 ? '' : 'none';
+            });
+        });
+    });
+    </script>
     </main>
 
     <?php include __DIR__ . '/../interfaz/footer.php'; ?>
 </body>
+
 </html>
