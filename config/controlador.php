@@ -83,8 +83,6 @@ if ($hash_contrasena === '' || !password_verify($clave, $hash_contrasena)) {
     exit();
 }
 
-// NOTE: antiguas comprobaciones individuales eliminadas si no son necesarias.
-
 // BLOQUE 11: GUARDAR DATOS DEL USUARIO EN LA SESIÓN
 // $_SESSION[...]: Almacena datos para usar en otras páginas
 // Incluye DNI, correo, nombre, apellido, rol y mensaje de bienvenida
