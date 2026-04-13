@@ -3,7 +3,7 @@
 // session_start(): Inicia la sesión para guardar datos del usuario logueado
 // require_once __DIR__ . '/conexionbd.php': Incluye el archivo de conexión a la BD
 session_start();
-require_once __DIR__ . '/../config/conexionbd.php';
+require '../config/conexionbd.php';
 
 // BLOQUE 2: VERIFICAR QUE EL FORMULARIO SE ENVÍO POR POST
 // $_SERVER['REQUEST_METHOD']: Método HTTP usado (GET, POST, etc.)
