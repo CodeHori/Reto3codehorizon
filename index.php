@@ -1,4 +1,5 @@
 <?php
+require '../config/controlador.php';
 // BLOQUE 1: INICIAR SESIÓN PARA ACCEDER A VARIABLES DE SESIÓN
 // session_start(): Inicia la sesión para leer/escribir en $_SESSION
 session_start();
@@ -56,6 +57,6 @@ unset($_SESSION['error']);
         </div>
     </main>
 
-    <?php include __DIR__ . '/interfaz/footer.php'; ?>
+    <?php require '../interfaz/footer.php'; ?>
 </body>
 </html>
