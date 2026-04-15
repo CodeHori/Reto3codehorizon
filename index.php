@@ -42,7 +42,7 @@ unset($_SESSION['error']);
             <?php endif; ?>
 
             <section>
-                <form action="/config/controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario" style="max-width: 360px; margin: 0 auto;">
+                <form action="/config/controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario">
                     <label for="uname">Correo</label>
                     <input type="text" name="uname" id="uname" placeholder="Correo" required class="control-formulario">
 
