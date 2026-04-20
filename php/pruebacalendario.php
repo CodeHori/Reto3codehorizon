@@ -89,7 +89,7 @@ foreach ($_POST as $key => $value) { //Recorre todos los datos enviados por el f
     }
 }
 
-$file = __DIR__ . '/../guardias.json'; // Ruta al archivo JSON que almacena las guardias por usuario
+$file = '../guardias.json'; // Ruta al archivo JSON que almacena las guardias por usuario
 $guardias = []; //Inicializa un array vacío para guardar las guardias del usuario.
 $usuario = $_SESSION['dni']; //Obtiene el DNI del usuario que está logueado.
 
