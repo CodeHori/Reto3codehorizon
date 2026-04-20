@@ -1,8 +1,8 @@
 <?php 
 session_start();
-    require __DIR__ . '/../config/conexionbd.php';
-    require __DIR__ . '/../config/auth.php';
-    require_once __DIR__ . '/../php/pruebacalendario.php';
+    require '../config/conexionbd.php';
+    require '../config/auth.php';
+    require_once '../php/pruebacalendario.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -115,7 +115,7 @@ session_start();
 
             </main>
             <footer>
-              <?php include __DIR__ . '/../interfaz/footer.php'; ?>  
+              <?php require '../interfaz/footer.php'; ?>  
             </footer>  
         </body>
 </html>
