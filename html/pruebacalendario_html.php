@@ -16,7 +16,7 @@ session_start();
         </head>
         <body>
             <nav>
-              <?php include __DIR__ . '/../interfaz/nav.php'; ?> 
+              <?php require'../interfaz/nav.php'; ?> 
 
             </nav>
             <main>
