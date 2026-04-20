@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../config/auth.php';
+require_once '../config/auth.php';
 
 
-require_once __DIR__ . '/../config/conexionbd.php';
+require_once '../config/conexionbd.php';
 
 
 
