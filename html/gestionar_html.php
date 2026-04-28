@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require_once __DIR__ . '/../php/gestionar.php';
+    require_once '../php/gestionar.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
