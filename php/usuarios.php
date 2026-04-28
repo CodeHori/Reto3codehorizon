@@ -2,8 +2,8 @@
 // BLOQUE 1: INCLUIR ARCHIVOS NECESARIOS PARA QUE LA PÁGINA FUNCIONE
 // auth.php verifica que el usuario esté logueado correctamente (sin login, no se puede acceder)
 // conexionbd.php establece la conexión con la base de datos de ausencias (necesaria para todas las operaciones)
-require_once __DIR__ . '/../config/auth.php';
-require_once __DIR__ . '/../config/conexionbd.php';
+require '../config/auth.php';
+require '../config/conexionbd.php';
 
 // BLOQUE 2: VERIFICAR QUE SOLO ADMINISTRADORES PUEDAN ACCEDER A ESTA PÁGINA
 // Se obtiene el rol guardado en la sesión del usuario. Si el usuario no es admin, se redirige con error
