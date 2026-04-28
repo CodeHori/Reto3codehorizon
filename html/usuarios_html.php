@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require_once __DIR__ . '/../php/usuarios.php';
+    require '../php/usuarios.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -15,7 +15,7 @@ session_start();
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php require '../interfaz/nav.php'; ?>
 
     <main>
         <div class="contenedor">
@@ -29,7 +29,7 @@ session_start();
 
             <div class="tarjeta tarjeta-formulario ancho-grande">
                 <h2 style="margin-bottom: 15px;"><?php echo $editar ? 'Editar usuario' : 'Nuevo usuario'; ?></h2>
-                <form method="post" action="/html/usuarios_html.php">
+                <form method="post" action="html/usuarios_html.php">
                     <input type="hidden" name="accion" value="<?php echo $editar ? 'editar' : 'crear'; ?>">
                     <div class="form-inline-row">
                         <div class="form-inline-item">
@@ -139,7 +139,7 @@ session_start();
     </script>
     </main>
 
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php require '../interfaz/footer.php'; ?>
 </body>
 
 </html>
