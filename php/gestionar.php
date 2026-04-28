@@ -1,9 +1,9 @@
 ﻿<?php
 // BLOQUE 1: INCLUIR ARCHIVOS DE AUTENTICACIÓN Y CONEXIÓN A BD
-// require_once __DIR__ . '/auth.php': Incluye autenticación para verificar login
-// require_once __DIR__ . '/conexionbd.php': Incluye conexión a la base de datos
-require_once __DIR__ . '/../config/auth.php';
-require_once __DIR__ . '/../config/conexionbd.php';
+// require '../config/auth.php': Incluye autenticación para verificar login
+// require '../config/conexionbd.php': Incluye conexión a la base de datos
+require '../config/auth.php';
+require '../config/conexionbd.php';
 
 // BLOQUE 2: VERIFICAR QUE EL USUARIO SEA ADMINISTRADOR
 // $_SESSION['rol']: Rol del usuario ('admin' o 'usuario')
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mensaje_y_redirigir('Solicitud eliminada correctamente.', 'exito');
     }
 
-    // PASO INTERNO: ACCIÓN CAMBIAR ESTADO
+    // PASO: ACCIÓN CAMBIAR ESTADO
     // if ($accion === 'cambiar_estado'): Si la acción es cambiar estado
     if ($accion === 'cambiar_estado') {
         // PASO 1: OBTENER EL NUEVO ESTADO
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$stmt->execute()) {
             mensaje_y_redirigir('No se pudo actualizar el estado.', 'error');
         }
-
+s
         // PASO 4: MENSAJE DE ÉXITO Y REDIRIGIR
         mensaje_y_redirigir('Estado actualizado a: ' . $nuevo_estado, 'exito');
     }
