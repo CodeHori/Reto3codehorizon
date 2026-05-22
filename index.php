@@ -1,5 +1,4 @@
 <?php
-require '../config/controlador.php';
 // BLOQUE 1: INICIAR SESIÓN PARA ACCEDER A VARIABLES DE SESIÓN
 // session_start(): Inicia la sesión para leer/escribir en $_SESSION
 session_start();
@@ -10,7 +9,7 @@ session_start();
 // header('Location: home.php'): Redirige a la página de inicio
 // exit(): Detiene la ejecución del script
 if (isset($_SESSION['dni'])) {
-    header('Location: /../php/home.php');
+    header('Location: php/home.php');
     exit();
 }
 
@@ -27,7 +26,7 @@ unset($_SESSION['error']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesion</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main id="mainses" class="mains">
@@ -42,7 +41,7 @@ unset($_SESSION['error']);
             <?php endif; ?>
 
             <section>
-                <form action="/config/controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario">
+                <form action="config/controlador.php" method="post" id="iniform" class="tarjeta tarjeta-formulario">
                     <label for="uname">Correo</label>
                     <input type="text" name="uname" id="uname" placeholder="Correo" required class="control-formulario">
 
@@ -57,6 +56,6 @@ unset($_SESSION['error']);
         </div>
     </main>
 
-    <?php require '../interfaz/footer.php'; ?>
+    <?php require 'interfaz/footer.php'; ?>
 </body>
 </html>
