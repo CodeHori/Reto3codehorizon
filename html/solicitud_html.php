@@ -1,8 +1,8 @@
 <?php 
 session_start();
-    require __DIR__ . '/../config/conexionbd.php';
-    require __DIR__ . '/../config/auth.php';
-    require_once __DIR__ . '/../php/solicitud.php';
+    require '../config/conexionbd.php';
+    require '../config/auth.php';
+    require '../php/solicitud.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -18,12 +18,12 @@ session_start();
     <!-- Título de la pestaña del navegador -->
     <title>Solicitud de Ausencia</title>
     <!-- Vincula el archivo CSS de estilos -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- ===== BLOQUE 10: INCLUIR NAVEGACIÓN =====-->
     <!-- include: Incluye el contenido del archivo nav.php (menú de navegación) -->
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php include '../interfaz/nav.php'; ?>
 
     <!-- ===== BLOQUE 11: CONTENEDOR PRINCIPAL =====-->
     <!-- <main>: Elemento semántico para el contenido principal de la página -->
@@ -144,6 +144,6 @@ session_start();
 
     <!-- ===== BLOQUE 16: INCLUIR PIE DE PÁGINA ===== -->
     <!-- include: Incluye el contenido del archivo footer.php (pie de página) -->
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php include '../interfaz/footer.php'; ?>
 </body>
 </html>

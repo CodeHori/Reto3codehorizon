@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require_once '../php/gestionar.php';
+    require '../php/gestionar.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -12,10 +12,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Solicitudes de Ausencia</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php include '../interfaz/nav.php'; ?>
 
     <main>
         <div class="contenedor">
@@ -67,11 +67,11 @@ session_start();
                                         <?php
                                         $ruta_just_fs = '';
                                         if (!empty($ausencia['justificante'])) {
-                                            $ruta_just_fs = __DIR__ . '/../' . ltrim($ausencia['justificante'], '/');
+                                            $ruta_just_fs = '../' . ltrim($ausencia['justificante'], '/');
                                         }
                                         if (!empty($ausencia['justificante']) && file_exists($ruta_just_fs)):
                                         ?>
-                                            <a href="/<?php echo htmlspecialchars(ltrim($ausencia['justificante'], '/')); ?>" target="_blank" class="boton boton-primario boton-pequeno">Abrir</a>
+                                            <a href="../<?php echo htmlspecialchars(ltrim($ausencia['justificante'], '/')); ?>" target="_blank" class="boton boton-primario boton-pequeno">Abrir</a>
                                         <?php else: ?>
                                             -
                                         <?php endif; ?>
@@ -84,10 +84,10 @@ session_start();
                                         <?php
                                         $ruta_tarea_fs = '';
                                         if ($adjunto_tarea !== '') {
-                                            $ruta_tarea_fs = __DIR__ . '/../' . ltrim($adjunto_tarea, '/');
+                                            $ruta_tarea_fs = '../' . ltrim($adjunto_tarea, '/');
                                         }
                                         if ($adjunto_tarea !== '' && file_exists($ruta_tarea_fs)): ?>
-                                            <a href="/<?php echo htmlspecialchars(ltrim($adjunto_tarea, '/')); ?>" target="_blank" class="boton boton-secundario boton-pequeno">Abrir archivo</a>
+                                            <a href="../<?php echo htmlspecialchars(ltrim($adjunto_tarea, '/')); ?>" target="_blank" class="boton boton-secundario boton-pequeno">Abrir archivo</a>
                                         <?php elseif ($texto_tarea === ''): ?>
                                             -
                                         <?php endif; ?>
@@ -123,10 +123,16 @@ session_start();
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+            <?php else: ?>
+                <div class="tarjeta">
+                <p style="text-align:center; padding:20px;">
+                    No hay solicitudes de ausencia pendientes.
+                </p>
+                </div>
             <?php endif; ?>
         </div>
     </main>
 
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php include '../interfaz/footer.php'; ?>
 </body>
 </html>

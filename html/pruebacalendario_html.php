@@ -2,7 +2,7 @@
 session_start();
     require '../config/conexionbd.php';
     require '../config/auth.php';
-    require_once '../php/pruebacalendario.php';
+    require '../php/pruebacalendario.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());

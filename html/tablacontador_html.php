@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require_once __DIR__ . '/../php/tablacontador.php';
+    require '../php/tablacontador.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
 
-<?php include __DIR__ . '/../interfaz/nav.php'; ?>
+<?php include '../interfaz/nav.php'; ?>
 <main>
     <div class="contenedor">
 
@@ -74,7 +74,7 @@ session_start();
     </script>
 </main>
 
-<?php include __DIR__ . '/../interfaz/footer.php'; ?>
+<?php include '../interfaz/footer.php'; ?>
 
 </body>
 

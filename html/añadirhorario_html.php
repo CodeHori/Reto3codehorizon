@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    require_once __DIR__ . '/../php/añadirhorario.php'; 
+    require '../php/añadirhorario.php'; 
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-     <?php include __DIR__ . '/../interfaz/nav.php';?>
+     <?php include '../interfaz/nav.php';?>
     <main>
         <form action="/php/añadirhorario.php" method="POST">
             <label for="L1">Lunes 1ª</label><br>
@@ -142,6 +142,6 @@
             <input type="submit" value="Guardar horario">
         </form>
     </main>
-    <?php include __DIR__ . '/../interfaz/footer.php';?>
+    <?php include '../interfaz/footer.php';?>
 </body>
 </html>

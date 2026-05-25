@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require_once __DIR__ . '/../php/historialguardias.php';
+    require '../php/historialguardias.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());
@@ -15,7 +15,7 @@ session_start();
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php include '../interfaz/nav.php'; ?>
     <main>
         <div class="contenedor">
             <div class="encabezado-centrado">
@@ -110,6 +110,6 @@ session_start();
     });
     </script>
 
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php include '../interfaz/footer.php'; ?>
 </body>
 </html>
