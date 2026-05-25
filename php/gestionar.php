@@ -1,4 +1,6 @@
 ﻿<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // BLOQUE 1: INCLUIR ARCHIVOS DE AUTENTICACIÓN Y CONEXIÓN A BD
 // require '../config/auth.php': Incluye autenticación para verificar login
 // require '../config/conexionbd.php': Incluye conexión a la base de datos
@@ -16,7 +18,7 @@ require '../config/conexionbd.php';
 if (($_SESSION['rol'] ?? '') !== 'admin') {
     $_SESSION['mensaje'] = 'No tienes permisos para gestionar ausencias.';
     $_SESSION['tipo_mensaje'] = 'error';
-    header('Location: /../php/home.php');
+    header('Location: ../php/home.php');
     exit();
 }
 
@@ -30,7 +32,7 @@ function mensaje_y_redirigir(string $mensaje, string $tipo = 'info'): void
 {
     $_SESSION['mensaje'] = $mensaje;
     $_SESSION['tipo_mensaje'] = $tipo;
-    header('Location: /../html/gestionar_html.php');
+    header('Location: ../html/gestionar_html.php');
     exit();
 }
 
@@ -48,7 +50,7 @@ function borrar_archivo_si_existe(?string $ruta): void
 
     $ruta_limpia = trim($ruta);
     if ($ruta_limpia !== '') {
-        $ruta_fs = __DIR__ . '/../' . ltrim($ruta_limpia, '/');
+        $ruta_fs = '../' . ltrim($ruta_limpia, '/');
         if (file_exists($ruta_fs)) {
             @unlink($ruta_fs);
         }
@@ -143,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$stmt->execute()) {
             mensaje_y_redirigir('No se pudo actualizar el estado.', 'error');
         }
-s
+
         // PASO 4: MENSAJE DE ÉXITO Y REDIRIGIR
         mensaje_y_redirigir('Estado actualizado a: ' . $nuevo_estado, 'exito');
     }
@@ -164,6 +166,10 @@ $sql = "SELECT a.id_a, a.dni_usuario, a.justificante, a.tipo_ausencia, a.tarea_f
         JOIN horas h ON ho.id_hora = h.id_hora
         ORDER BY a.id_a DESC";
 $stmt = $conexion->prepare($sql);
+
+if (!$stmt) {
+    die($conexion->error);
+}
 $stmt->execute();
 $ausencias = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt->close();

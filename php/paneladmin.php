@@ -1,8 +1,8 @@
 <?php
 // BLOQUE 1: INCLUIR AUTENTICACIÓN PARA PROTEGER LA PÁGINA
-// require_once __DIR__ . '/auth.php': Incluye el archivo que verifica si el usuario está logueado
+// require_once '../auth.php': Incluye el archivo que verifica si el usuario está logueado
 // Si no lo está, redirige automáticamente al login
-require_once __DIR__ . '/../config/auth.php';
+require '../config/auth.php';
 
 // BLOQUE 2: VERIFICAR SI EL USUARIO TIENE ROL DE ADMINISTRADOR
 // $_SESSION['rol']: Rol del usuario guardado en la sesión (ej. 'admin', 'usuario')
@@ -15,7 +15,7 @@ require_once __DIR__ . '/../config/auth.php';
 if (($_SESSION['rol'] ?? '') !== 'admin') {
     $_SESSION['mensaje'] = 'No tienes permiso para acceder al panel de administracion.';
     $_SESSION['tipo_mensaje'] = 'error';
-    header('Location: /../php/home.php');
+    header('Location: ../php/home.php');
     exit();
 }
 ?>
@@ -24,10 +24,10 @@ if (($_SESSION['rol'] ?? '') !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <title>Panel de administracion</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php include '../interfaz/nav.php'; ?>
 
     <main>
         <div class="contenedor">
@@ -41,7 +41,7 @@ if (($_SESSION['rol'] ?? '') !== 'admin') {
                     <h3>Gestionar usuarios</h3>
                     <p>Crear, editar y eliminar usuarios.</p>
                     <div class="acciones">
-                        <a href="/html/usuarios_html.php">Abrir</a>
+                        <a href="../html/usuarios_html.php">Abrir</a>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@ if (($_SESSION['rol'] ?? '') !== 'admin') {
                     <h3>Gestionar ausencias</h3>
                     <p>Revisar, aprobar o rechazar solicitudes.</p>
                     <div class="acciones">
-                        <a href="/html/gestionar_html.php">Abrir</a>
+                        <a href="../html/gestionar_html.php">Abrir</a>
                     </div>
                 </div>
 
@@ -57,13 +57,13 @@ if (($_SESSION['rol'] ?? '') !== 'admin') {
                     <h3>Calendario y guardias</h3>
                     <p>Ver ausencias aprobadas y tareas.</p>
                     <div class="acciones">
-                        <a href="/html/pruebacalendario_html.php">Abrir</a>
+                        <a href="../html/pruebacalendario_html.php">Abrir</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php include '../interfaz/footer.php'; ?>
 </body>
 </html>

@@ -2,7 +2,7 @@
 // BLOQUE 1: INCLUIR AUTENTICACIÓN PARA PROTEGER LA PÁGINA
 // require_once __DIR__ . '/auth.php': Incluye el archivo que verifica si el usuario está logueado
 // Si no lo está, redirige automáticamente al login
-require_once __DIR__ . '/../config/auth.php';
+require_once '../config/auth.php';
 
 // BLOQUE 2: OBTENER MENSAJES DE LA SESIÓN PARA MOSTRAR EN LA PÁGINA
 // $_SESSION['mensaje_home']: Mensaje de bienvenida guardado en el login
@@ -30,10 +30,10 @@ $clase = $tipo_mensaje === 'exito' ? 'mensaje mensaje-exito' : 'mensaje mensaje-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - CPIFP Bajo Aragon</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../interfaz/nav.php'; ?>
+    <?php include '../interfaz/nav.php'; ?>
 
     <main>
         <div class="contenedor">
@@ -55,6 +55,6 @@ $clase = $tipo_mensaje === 'exito' ? 'mensaje mensaje-exito' : 'mensaje mensaje-
         </div>
     </main>
 
-    <?php include __DIR__ . '/../interfaz/footer.php'; ?>
+    <?php include '../interfaz/footer.php'; ?>
 </body>
 </html>

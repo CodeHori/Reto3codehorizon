@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../config/auth.php';
-require_once __DIR__ . '/../config/conexionbd.php';
+require '../config/auth.php';
+require '../config/conexionbd.php';
 
 if (!isset($_SESSION['dni'])) {
     header('location: index.php');

@@ -1,10 +1,10 @@
 <?php
 //BLOQUE 1: INCLUIR ARCHIVOS DE CONEXION A LA BD Y AUTENTICACION DE USUARIO
 //require_once: Incluye un archivo PHP solo una vez (evita duplicaciones)
-//__DIR__ . '/auth.php': Incluye el archivo de autenticación que gestiona las sesiones de usuario
-require_once __DIR__ . '/../config/auth.php';
+// 'auth.php': Incluye el archivo de autenticación que gestiona las sesiones de usuario
+require '../config/auth.php';
 //Incluye el archivo de conexión a la base de datos para poder conectar y ejecutar consultas
-require_once __DIR__ . '/../config/conexionbd.php';
+require '../config/conexionbd.php';
 
 //BLOQUE 2: OBTENER DNI DEL USUARIO DE LA SESIÓN
 //$_SESSION['dni']: Obtiene el DNI del usuario que está logueado (guardado en la sesión)

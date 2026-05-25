@@ -1,9 +1,9 @@
 ﻿<?php
 // BLOQUE 1: INCLUIR ARCHIVOS DE AUTENTICACIÓN Y CONEXIÓN
-// require_once __DIR__ . '/auth.php': Verifica que el usuario esté logueado
-// require_once __DIR__ . '/conexionbd.php': Conecta a la base de datos
-require_once __DIR__ . '/../config/auth.php';
-require_once __DIR__ . '/../config/conexionbd.php';
+// require '/auth.php': Verifica que el usuario esté logueado
+// require '/conexionbd.php': Conecta a la base de datos
+require '../config/auth.php';
+require '../config/conexionbd.php';
 
 // BLOQUE 2: VERIFICAR ROL DE ADMINISTRADOR
 // $_SESSION['rol']: Rol del usuario
@@ -11,7 +11,7 @@ require_once __DIR__ . '/../config/conexionbd.php';
 if (($_SESSION['rol'] ?? '') !== 'admin') {
     $_SESSION['mensaje'] = 'Solo administradores pueden ver el historial.';
     $_SESSION['tipo_mensaje'] = 'error';
-    header('Location: /../php/home.php');
+    header('Location: ../php/home.php');
     exit();
 }
 

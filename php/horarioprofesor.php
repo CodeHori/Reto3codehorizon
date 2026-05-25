@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__ . '/../config/conexionbd.php';
-require_once __DIR__ . '/../config/auth.php';
+include '../config/conexionbd.php';
+require '../config/auth.php';
 
 
 if (!isset($_SESSION['dni'])) {
@@ -58,7 +58,7 @@ while ($fila = $resultado->fetch_assoc()) { // se obtiene cada fila de la consul
         </head>
         <body>
             <nav>
-                <?php include __DIR__ . '/../interfaz/nav.php'; ?> 
+                <?php include '../interfaz/nav.php'; ?> 
             </nav>
 
             <main>
@@ -99,7 +99,7 @@ while ($fila = $resultado->fetch_assoc()) { // se obtiene cada fila de la consul
 
             </main>   
             <footer>
-              <?php include __DIR__ . '/../interfaz/footer.php'; ?>  
+              <?php include '../interfaz/footer.php'; ?>  
             </footer>
         </body>  
     </html>

@@ -1,6 +1,6 @@
 <?php
-    require __DIR__ . '/../config/conexionbd.php';
-    require __DIR__ . '/../config/auth.php';
+    require '../config/conexionbd.php';
+    require '../config/auth.php';
 
     if (!$conexion) {
     die("Conexion fallida: " . mysqli_connect_error());

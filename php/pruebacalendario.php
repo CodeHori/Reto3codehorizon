@@ -1,8 +1,8 @@
 <?php
-require_once '../config/auth.php';
+require '../config/auth.php';
 
 
-require_once '../config/conexionbd.php';
+require '../config/conexionbd.php';
 
 
 
