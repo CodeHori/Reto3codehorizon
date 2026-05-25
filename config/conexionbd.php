@@ -6,8 +6,8 @@
 // $contrasena: Contraseña del usuario (vacía por defecto en XAMPP)
 // $base_datos: Nombre de la base de datos a usar
 $host = '127.0.0.1';
-$usuario = 'Codehorizon';
-$contraseña = 'Codehorizon1234/_';
+$usuario = 'root';
+$contraseña = '';
 $base_datos = 'ausencias_cpifp';
 
 // BLOQUE 2: CREAR LA CONEXIÓN A LA BASE DE DATOS

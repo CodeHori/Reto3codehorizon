@@ -11,7 +11,7 @@ require 'conexionbd.php';
 // header('Location: index.php'): Redirige al formulario de login
 // exit(): Detiene la ejecución
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -30,7 +30,7 @@ $clave = $_POST['psw'] ?? '';
 // header('Location: index.php'): Redirige de vuelta al login para mostrar el error
 if ($correo === '' || $clave === '') {
     $_SESSION['error'] = 'LOS CAMPOS ESTAN VACIOS';
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -45,7 +45,7 @@ $stmt = $conexion->prepare($sql);
 // $_SESSION['error']: Guarda mensaje de error interno
 if (!$stmt) {
     $_SESSION['error'] = 'Error interno al iniciar sesion';
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -63,23 +63,23 @@ $resultado = $stmt->get_result();
 // $_SESSION['error']: Mensaje de usuario no encontrado
 if ($resultado->num_rows !== 1) {
     $_SESSION['error'] = 'USUARIO NO ENCONTRADO';
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
 // BLOQUE 9: OBTENER LOS DATOS DEL USUARIO
 // fetch_assoc(): Convierte la fila en un array asociativo
-// $hash_contrasena: Obtiene el hash de la contraseña (maneja nombres de columna variables)
+// $hash_contraseña: Obtiene el hash de la contraseña (maneja nombres de columna variables)
 $usuario = $resultado->fetch_assoc();
 $hash_contrasena = $usuario['contraseÃ±a'] ?? ($usuario['contraseña'] ?? '');
 
 // BLOQUE 10: VERIFICAR LA CONTRASEÑA
-// password_verify($clave, $hash_contrasena): Compara la clave con el hash
+// password_verify($clave, $hash_contraseña): Compara la clave con el hash
 // || : Si el hash está vacío o no coincide, error
 // $_SESSION['error']: Mensaje de contraseña incorrecta
 if ($hash_contrasena === '' || !password_verify($clave, $hash_contrasena)) {
-    $_SESSION['error'] = 'CONTRASENA INCORRECTA';
-    header('Location: index.php');
+    $_SESSION['error'] = 'CONTRASEÑA INCORRECTA';
+    header('Location: ../index.php');
     exit();
 }
 
@@ -96,5 +96,5 @@ $_SESSION['mensaje_home'] = 'Bienvenido ' . $usuario['nombre'] . ' ' . $usuario[
 // BLOQUE 12: REDIRIGIR AL PANEL PRINCIPAL
 // header('Location: home.php'): Redirige a la página de inicio después del login exitoso
 // exit(): Detiene la ejecución
-header('Location: /php/home.php');
+header('Location: ../php/home.php');
 exit();

@@ -1,5 +1,4 @@
 <?php
-
 // BLOQUE 1: INICIAR SESIÓN SI NO ESTÁ ACTIVA
 // session_status(): Verifica el estado de la sesión (PHP_SESSION_NONE, PHP_SESSION_ACTIVE, etc.)
 // !== PHP_SESSION_ACTIVE: Si la sesión no está activa, la iniciamos
@@ -16,7 +15,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 // header('Location: index.php'): Redirige al formulario de login
 // exit(): Detiene la ejecución del script para evitar que se cargue la página protegida
 if (!isset($_SESSION['dni'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
